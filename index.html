@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous" defer></script>
+    <script src="js/app.js" defer></script>
+    <title>Bomb.com</title>
+</head>
+<body>
+    <header>
+    <h1>BOMB.com</h1>
+    <img src="bomb.jpeg">
+    </header>
+
+    <div class="buttons">
+        <button id="start">START GAME</button>
+        <button id="instructions">INSTRUCTIONS</button>
+    </div>
+    
+    <div class="timer">
+        <h1 id="countdown">2:00</h1>
+    </div>
+
+
+    <div class="game">
+        <div id="close-button">&times;</div>
+        <div class="top"> 
+            <div class="bomb-parts" id="part-1">
+                <div class="mini-game" id="game-1"></div>
+            </div>
+            <div class="bomb-parts">
+                <div class="mini-game" id="game-2"></div>
+            </div>
+        </div>
+        <div class="bottom">
+            <div class="bomb-parts">
+                <div class="mini-game" id="game-3"></div>
+            </div>
+            <div class="bomb-parts">
+                <div class="mini-game" id="game-4"></div>
+            </div>
+        </div>
+    </div>
+
+<!-- Modal (learned from W3Schools but I understand it) -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close-modal">&times;</span>
+            <h2>How to play BOMB.com:</h2>
+        </div>
+        <div class="modal-body">
+            <h3>Welcome to your first day on the job as an FBI Agent!</h3>
+            <p>Just as your luck would have it, your very first task is to defuse a bomb found near the White House. You have 2 minutes to defuse the bomb, or else... well... we'll leave that to your imagination. &#128579;</p>
+            <h3>&#9203; To defuse the bomb: &#9203;</h3>
+            <ul class="emoji-bullets">
+                <li>Click on one of the four parts of the bomb to try and defuse that part.</li>
+                <li>Each part has a logic problem that will defuse that part of the bomb, once solved.</li>
+                <li>If you are having trouble solving a section of the bomb, tackle another part and come back later.</li>
+                <li>Once all four parts of the bomb are solved, the bomb will be defused.</li>
+                <li>Be mindful of the time! If the timer runs out before all parts are solved... 💥!</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <footer>
+    <p>©2020 <a href="http://fletcherjonesiv.com" target="_blank" onclick='window.open("http://www.linkedin.com/in/fletcherj1/"); return true;'>Fletcher Jones, IV.</a>All rights reserved.</p>
+    </footer>
+</body>
+</html>
