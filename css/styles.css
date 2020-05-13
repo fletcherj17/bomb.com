@@ -4,6 +4,7 @@ align-items: center;
 justify-content: center;
 height: 100vh;
 flex-direction: column;
+font-family: 'DM Mono', monospace;;
 }
 .game {
     width: 80vh;
@@ -12,6 +13,9 @@ flex-direction: column;
     display: flex;
     flex-direction: column;
     position: relative;
+    border-radius: 7%;
+    background-image: url(images/bomb-background.jpg);
+    background-position: center;
 }
 img {
     border-radius: 50%;
@@ -46,22 +50,22 @@ footer {
 }
 
 .mini-game {
-    border: 2px solid grey;
     width: 100%;
     height: 100%;
+    
 }
 
 #game-1{
-    background: purple ;
+    border-top-left-radius: 7%;
 }
 #game-2{
-    background: orangered ;
+    border-top-right-radius: 7%;
 }
 #game-3{
-    background: blue ;
+    border-bottom-left-radius: 7%;
 }
 #game-4{
-    background: green ;
+    border-bottom-right-radius: 7%;
 }
 
 #close-button {
@@ -147,3 +151,42 @@ footer {
 .emoji-bullets li:before {
     content: "💣 ";
     }
+
+/* Blinking animation from computerhope.com */
+.blink {
+	-webkit-animation: blink .75s linear infinite;
+	-moz-animation: blink .75s linear infinite;
+	-ms-animation: blink .75s linear infinite;
+	-o-animation: blink .75s linear infinite;
+	animation: blink .75s linear infinite;
+}
+@-webkit-keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
+@-moz-keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
+@-ms-keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
+@-o-keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
+@keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}

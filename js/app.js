@@ -1,5 +1,6 @@
 // Start out with game hidden
 $('.game').hide();
+$('.timer').hide();
 
 /* Modal for Instructions button (used W3Schools.com but refactored the vanilla JS they provided into jQuery to make sure I understood everything) */
 
@@ -13,33 +14,93 @@ $closeModalBtn.on('click', function() {
     $modal.hide();
 });
 
-// Write functions here 
+/* Write functions here */ 
 
+//Start button
 const startGame = () => {
     $('.game').show();
+    $('.timer').show();
+    setTimer();
 }
-
+//Countdown Timer functionality
+let time = 119;
+let clock = 159;
+let timeRemaining = clock.toString();
 const setTimer = () => {
-    time = 120;
-    
-}
+    $('#start').off();
+    const timer = setInterval( ()=>{
+        if (time === 0) {
+            $('#countdown').text('0:00');
+            clearInterval(timer);
+            time = 119;
+            clock = 159;
+            $('#start').on('click', startGame);
+        } else if (time >= 60){
+        timeRemaining = clock.toString().split('');
+        timeRemaining.splice(1,0,':');
+        timeRemaining = timeRemaining.join('');
+        $('#countdown').text(timeRemaining);
+        timeRemaining = timeRemaining.split('');
+        timeRemaining.splice(1,1);
+        clock = Number(timeRemaining.join(''));
+        time--
+        clock--;
+        if (time === 59){$('#countdown').css('color', 'red')};
+        } else if (time < 60 && time >= 30){
+            $('#countdown').css('color', 'black');
+            timeRemaining = time.toString().split('');
+            timeRemaining.splice(0,0,'0:');
+            timeRemaining = timeRemaining.join('');
+            $('#countdown').text(timeRemaining);
+            timeRemaining = timeRemaining.split('');
+            timeRemaining.splice(1,1);
+            timeRemaining = Number(timeRemaining.join(''));
 
+            timeRemaining--; 
+            time--
+        } else if (time < 30 && time >= 10){
+            $('#countdown').css("transform", "scale(1.3)")
+            $('#countdown').css("transition", ".5s linear")
+            $('#countdown').css("animation", "blink .8s linear infinite")
+            $('#countdown').css("color", "red")
+            timeRemaining = time.toString().split('');
+            timeRemaining.splice(0,0,'0:');
+            timeRemaining = timeRemaining.join('');
+            $('#countdown').text(timeRemaining);
+            timeRemaining = timeRemaining.split('');
+            timeRemaining.splice(1,1);
+            timeRemaining = Number(timeRemaining.join(''));
+            timeRemaining--; 
+            time--
+        } else if (time < 10){
+            $('#countdown').css("animation", "blink .4s linear infinite")
+            $('#countdown').text(`0:0${time}`);
+            time--
+        }
+    }, 1000);
+};
+
+//Click to play minigames
 $(".mini-game").on("click",function(event){
+    if ($("#close-button").css('display') === "none"){
     $currentMiniGame = $(event.target);
-    console.log(event.target);
+    $currentMiniGame.css('background-color', "rgba(0,0,0,0.7)")
     $currentMiniGameParent = $currentMiniGame.parent();
     console.log($currentMiniGameParent);
     $('.mini-game').hide();
     $($currentMiniGame).show();
     $('.game').append($currentMiniGame);
+    
     $("#close-button").show();
+    }
+
     $("#close-button").on('click', function(event){
         $('.mini-game').show();
     $($currentMiniGameParent).append($currentMiniGame);
-        $("#close-button").hide();
+    $currentMiniGame.css('background-color', "none")
+    $("#close-button").hide();
     });
-    
-})
+});
 
 
 // Add listeners here 
