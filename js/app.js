@@ -28,8 +28,8 @@ const startGame = () => {
     }
 }
 //Countdown Timer functionality
-let time = 15;
-let clock = 15;
+let time = 35;
+let clock = 35;
 let timeRemaining = clock.toString();
 const setTimer = () => {
     $('#start').hide();
@@ -52,7 +52,7 @@ const setTimer = () => {
         clock--;
         if (time === 59){$('#countdown').css('color', 'red')};
         } else if (time < 60 && time >= 30){
-            $('#countdown').css('color', 'black');
+            $('#countdown').css('color', 'firebrick');
             timeRemaining = time.toString().split('');
             timeRemaining.splice(0,0,'0:');
             timeRemaining = timeRemaining.join('');
