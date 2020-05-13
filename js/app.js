@@ -1,4 +1,3 @@
-// Start out with game hidden
 $('.game').hide();
 $('.timer').hide();
 
@@ -18,23 +17,29 @@ $closeModalBtn.on('click', function() {
 
 //Start button
 const startGame = () => {
+    if ($('#start').text() === 'START GAME'){
     $('.game').show();
+    $('#start').text('RESTART')
     $('.timer').show();
     setTimer();
+    } else {
+        console.log('pressed')
+        location.reload(true);  
+    }
 }
 //Countdown Timer functionality
-let time = 119;
-let clock = 159;
+let time = 15;
+let clock = 15;
 let timeRemaining = clock.toString();
 const setTimer = () => {
-    $('#start').off();
+    $('#start').hide();
     const timer = setInterval( ()=>{
         if (time === 0) {
             $('#countdown').text('0:00');
             clearInterval(timer);
             time = 119;
             clock = 159;
-            $('#start').on('click', startGame);
+            $('#start').show();
         } else if (time >= 60){
         timeRemaining = clock.toString().split('');
         timeRemaining.splice(1,0,':');
@@ -86,16 +91,18 @@ $(".mini-game").on("click",function(event){
     $currentMiniGame = $(event.target);
     $currentMiniGame.css('background-color', "rgba(0,0,0,0.7)")
     $currentMiniGameParent = $currentMiniGame.parent();
-    console.log($currentMiniGameParent);
+    $currentMiniGameChild = $currentMiniGame.children();
+    console.log($currentMiniGameChild);
     $('.mini-game').hide();
     $($currentMiniGame).show();
     $('.game').append($currentMiniGame);
-    
+    $currentMiniGameChild.show();
     $("#close-button").show();
     }
 
     $("#close-button").on('click', function(event){
-        $('.mini-game').show();
+    $currentMiniGameChild.hide();
+    $('.mini-game').show();
     $($currentMiniGameParent).append($currentMiniGame);
     $currentMiniGame.css('background-color', "none")
     $("#close-button").hide();

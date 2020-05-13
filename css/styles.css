@@ -1,37 +1,47 @@
 body{
 display: flex;
 align-items: center;
-justify-content: center;
+justify-content: space-evenly;
 height: 100vh;
 flex-direction: column;
-font-family: 'DM Mono', monospace;;
+font-family: 'DM Mono', monospace;
+background-color: grey;
 }
+
 .game {
-    width: 80vh;
-    height: 60vh;
+    width: 91vh;
+    height: 67vh;
     background: #1f1f1f;
     display: flex;
     flex-direction: column;
     position: relative;
-    border-radius: 7%;
+    border-radius: 4%;
     background-image: url(images/bomb-background.jpg);
     background-position: center;
 }
-img {
-    border-radius: 50%;
-    width: 87.5px;
-    height: 87.5px;
-    display: block;
-    align-self: center;
+
+.timer {
+    display: flex;
+    justify-content: center;
+    background: black;
+    border-radius: 2px;
+    height: 10vh;
+    width: 20vh;
+    margin: .2vh;
 }
 
 button{
+    background-color: #1f1f1f;
     margin-bottom: 15px;
     cursor: pointer;
+    padding: 20px;
+    font-weight: bold;
+    color: firebrick;
 }
 
 h1 {
     margin: 0;
+    font-size: 32px;
 }
 
 .top, .bottom {
@@ -43,29 +53,34 @@ h1 {
     flex: 1;
 }
 
-footer {
-    position: absolute;
-    margin-top: 0;
-    top: 100vh;
+.problems {
+    display:none
 }
 
 .mini-game {
+    display: flex;
     width: 100%;
     height: 100%;
-    
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+.mini-game button {
+    background: green;
+    padding: 10px;
 }
 
 #game-1{
-    border-top-left-radius: 7%;
+    border-top-left-radius: 4%;
 }
 #game-2{
-    border-top-right-radius: 7%;
+    border-top-right-radius: 4%;
 }
 #game-3{
-    border-bottom-left-radius: 7%;
+    border-bottom-left-radius: 4%;
 }
 #game-4{
-    border-bottom-right-radius: 7%;
+    border-bottom-right-radius: 4%;
 }
 
 #close-button {
@@ -100,7 +115,7 @@ footer {
 /* Modal Header */
 .modal-header {
     padding: 2px 16px;
-    background-color: #5cb85c;
+    background-color: firebrick;
     color: white;
     text-align: center;
 }
@@ -112,7 +127,8 @@ footer {
   /* Modal Content */
 .modal-content {
     position: relative;
-    background-color: #fefefe;
+    color: white;
+    background-color: #1f1f1f;
     margin: auto;
     padding: 0;
     border: 1px solid #888;
