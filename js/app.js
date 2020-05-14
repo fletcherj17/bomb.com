@@ -1,8 +1,6 @@
 $('.game').hide();
 $('.game-header').hide();
-
 /* Modal for Instructions button (used W3Schools.com but refactored the vanilla JS they provided into jQuery to make sure I understood everything) */
-
 $modal = $("#myModal");
 $instructionsBtn = $("#instructions");
 $closeModalBtn = $(".close-modal");
@@ -14,7 +12,6 @@ $closeModalBtn.on('click', function() {
 });
 
 /* Write functions here */ 
-
 //Start button
 const startGame = () => {
     if ($('#start').text() === 'START GAME'){
@@ -39,10 +36,12 @@ const setTimer = () => {
             $('#countdown').text('0:00');
             clearInterval(timer);
             $('#start').show();
-            if (confirm('BOMB EXPLODED! Press "OK" to try again.')) {
+            if (confirm('BOMB EXPLODED! Press "OK" to try again. Press "Cancel" to display the leaderboard.')) {
                 location.reload(true);   
             } else {
+                $('#close-button').click();
                 $('.mini-game').off();
+                $('aside').show();
             }
         } else if (time >= 60){
         timeRemaining = clock.toString().split('');
@@ -91,22 +90,21 @@ const setTimer = () => {
 
 //Minigame Gameplay
 //Opening and closing mini-games
-let minigameColors = ["rgba(25, 70, 150, 0.7)","rgba(50, 35, 70, 0.7)","rgba(230, 50, 5, 0.7)","rgba(188, 131, 0, 0.7)"];
+let minigameColors = ["rgba(25, 70, 150, 0.7)","rgba(50, 35, 70, 0.7)","rgba(230, 50, 5, 0.7)","rgba(200, 131, 0, 0.7)"];
 $(".mini-game").on("click",function(event){
     if ($("#close-button").css('display') === "none"){
     $currentMiniGame = $(event.target);
-    console.log($currentMiniGame)
     if ($currentMiniGame.css('background-color') === "rgba(0, 0, 0, 0)") {
         $currentMiniGame.css('background-color', minigameColors[0]);
         minigameColors.splice(0,1)
     }
     $currentMiniGameParent = $currentMiniGame.parent();
     $currentMiniGameChild = $currentMiniGame.children();
-    console.log($currentMiniGameChild);
     $('.mini-game').hide();
     $($currentMiniGame).show();
     $('.game').append($currentMiniGame);
     $currentMiniGameChild.show();
+    $('input').focus();
     $("#close-button").show();
     }
 
@@ -118,7 +116,6 @@ $(".mini-game").on("click",function(event){
     $("#close-button").hide();
     });
 });
-
 // Receiving player responses and reacting
 let $strikes = $('#strike-count')
 let correctResponses = ['11','thursday','40','5'];
@@ -127,18 +124,19 @@ let moreCorrectResponses = ['Eleven','thurs','40 socks','five minutes'];
 let completedColor = 'rgba(12, 111, 1, 0.6)';
 $(".submit").on("click",function(event){
     $currentSubmitBtn = $(event.target);
-    $currentResponse = $currentSubmitBtn.parents().eq(0).siblings().eq(2).val();
+    $currentResponse = $currentSubmitBtn.siblings().eq(2).val();
     if (!(correctResponses.includes($currentResponse) || moreCorrectResponses.includes($currentResponse) || altCorrectResponses.includes($currentResponse))){
         if ($strikes.text() == "X X ") {
             $strikes.text($strikes.text() + "X ");
             $('#start').show();
-            if (confirm('BOMB EXPLODED! Press "OK" to try again.')) {
+            if (confirm('BOMB EXPLODED! Press "OK" to try again. Press "Cancel" to display the leaderboard.')) {
                 location.reload(true);   
             } else {
+                $('#close-button').click();
                 $('.mini-game').off();
+                $('aside').show();
             }
-        } else if ($strikes.text() == "O STRIKES"){
-        console.log('works');
+        } else if ($strikes.text() == "0 STRIKES"){
         return $strikes.text('X ');
         } else if ($strikes.text() == "X "){
         $($strikes).css('color','red');
@@ -149,21 +147,34 @@ $(".submit").on("click",function(event){
         return $strikes.text($strikes.text() + "X ");
         }
     } else {
-        $currentSubmitBtn.parents().eq(2).css('background-color', completedColor)
-        $currentSubmitBtn.parents().eq(0).siblings().eq(2).val("");
-        $currentSubmitBtn.parents().eq(0).siblings().eq(0).text('BOMB SECTION DEFUSED!');
-        $currentSubmitBtn.parents().eq(0).siblings().eq(1).css('text-decoration', "line-through");
+        $currentSubmitBtn.hide();
+        $currentSubmitBtn.parents().eq(1).css('background-color', completedColor)
+        $currentSubmitBtn.siblings().eq(2).val("");
+        $currentSubmitBtn.siblings().eq(0).text('BOMB SECTION DEFUSED!');
+        $currentSubmitBtn.siblings().eq(1).css('text-decoration', "line-through");
         if ($('#game-1').css('background-color') === completedColor && $('#game-2').css('background-color') === completedColor && $('#game-3').css('background-color') === completedColor && $('#game-4').css('background-color') === completedColor) {
             $('#start').show();
-            if (confirm('BOMB DEFUSED! Press "OK" to play again.')) {
+            if (confirm('BOMB DEFUSED! Press "OK" to play again. Press "Cancel" to display the leaderboard.')) {
                 location.reload(true);   
             } else {
+                $('#close-button').click();
                 $('.mini-game').off();
+                let name = prompt('Enter your name:')
+                $('.board-body').append(`<p>${name} — ${time}s</p>`)
+                $('aside').show();
             }
         }
     }
 });
 
-// Add listeners here 
+/* Add listeners here  */
 
+//Start button
 $('#start').on('click', startGame);
+//Allows the enter key to submit answers
+$("input").keyup(function(event) {
+    if (event.keyCode === 13) {
+        $target = $(event.target)
+        $target.siblings(2).click();
+    }
+});
