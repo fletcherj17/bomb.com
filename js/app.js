@@ -1,5 +1,5 @@
 $('.game').hide();
-$('.timer').hide();
+$('.game-header').hide();
 
 /* Modal for Instructions button (used W3Schools.com but refactored the vanilla JS they provided into jQuery to make sure I understood everything) */
 
@@ -20,7 +20,7 @@ const startGame = () => {
     if ($('#start').text() === 'START GAME'){
     $('.game').show();
     $('#start').text('RESTART')
-    $('.timer').show();
+    $('.game-header').show();
     setTimer();
     } else {
         console.log('pressed')
@@ -28,8 +28,8 @@ const startGame = () => {
     }
 }
 //Countdown Timer functionality
-let time = 35;
-let clock = 35;
+let time = 119;
+let clock = 159;
 let timeRemaining = clock.toString();
 const setTimer = () => {
     $('#start').hide();

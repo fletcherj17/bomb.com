@@ -6,22 +6,27 @@
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous" defer></script>
     <script src="js/app.js" defer></script>
+    <script src="https://kit.fontawesome.com/557a3bdbd9.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@500&display=swap" rel="stylesheet">
     <title>Bomb.com</title>
 </head>
 <body>
     <header>
-    <h1>BOMB.COM</h1>
+    <h1 id="title">BOMB.COM</h1>
     </header>
 
     <div class="buttons">
         <button id="start">START GAME</button>
         <button id="instructions">INSTRUCTIONS</button>
     </div>
-    
+<div class="game-header">
     <div class="timer">
         <h1 id="countdown">2:00</h1>
     </div>
+    <div class="strikes">
+        <h1 id="strike-count"></h1>
+    </div>
+</div>
 
 
     <div class="game">
@@ -31,15 +36,15 @@
                 <div class="mini-game" id="game-1">
                     <section class="problems" id='problem-1'><h2>Solve this problem to diffuse!</h2>
                     <p>riddle or problem, lorem ipsum lorem</p>
-                    <input id='solution-1'><button for='solution-1'></button>
+                    <input id='solution-1'><button><i class="fas fa-check"></i></button>
                     </section>
                 </div>
             </div>
             <div class="bomb-parts">
                 <div class="mini-game" id="game-2">
-                    <section class="problems" id='problem-2'><h2>Solve this problem to diffuse!</h2>
-                    <p>riddle or problem, lorem ipsum lorem</p>
-                    <input><button></button>
+                    <section class="problems" id='problem-2'><h2>SIMON SAYS</h2>
+                    <p>Remember the colors!</p>
+                    <input id='solution-2'><button><i class="fas fa-check"></i></button>
                     </section>
                 </div>
                 
@@ -50,7 +55,7 @@
                 <div class="mini-game" id="game-3">
                     <section class="problems" id='problem-3'><h2>Solve this problem to diffuse!</h2>
                     <p>riddle or problem, lorem ipsum lorem</p>
-                    <input><button></button>
+                    <input id='solution-3'><button><i class="fas fa-check"></i></button>
                     </section>
                 </div>
                 
@@ -59,7 +64,7 @@
                 <div class="mini-game" id="game-4">
                     <section class="problems" id='problem-4'><h2>Solve this problem to diffuse!</h2>
                         <p>riddle or problem, lorem ipsum lorem</p>
-                        <input><button></button>
+                        <input id='solution-4'><button><i class="fas fa-check"></i></button>
                         </section>
                 </div>
                 

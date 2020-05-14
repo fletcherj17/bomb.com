@@ -5,11 +5,16 @@ justify-content: space-evenly;
 height: 100vh;
 flex-direction: column;
 font-family: 'DM Mono', monospace;
-background-color: grey;
+background-image: url(images/bg.jpg);
+}
+
+#title{
+    -webkit-text-stroke-width: .1px;
+    -webkit-text-stroke-color: whitesmoke;
 }
 
 .game {
-    width: 90vh;
+    width: 87vh;
     height: 67vh;
     background: #1f1f1f;
     display: flex;
@@ -17,10 +22,17 @@ background-color: grey;
     position: relative;
     background-image: url(images/bomb-background.jpg);
     background-position: center;
+    border: 5px solid #1f1f1f;
 }
 
-.timer {
+.game-header {
     display: flex;
+    justify-content: center;
+}
+
+.timer, .strikes {
+    display: flex;
+    flex: 1;
     justify-content: center;
     align-items: center;
     background: black;
@@ -30,10 +42,14 @@ background-color: grey;
     margin: .2vh;
 }
 
-#countdown{
+#countdown, #strike-count{
     text-align: center;
     color:firebrick;
     flex: 1;
+}
+
+#strike-count {
+    color: red;
 }
 
 button{
@@ -56,6 +72,18 @@ header h1 {
     flex: 1;
 }
 
+a:visited{
+    color: lightgrey;
+}
+
+a {
+    color: firebrick;
+}
+
+button:hover {
+    background-color: lightgray;
+}
+
 .bomb-parts {
     flex: 1;
 }
@@ -74,10 +102,17 @@ header h1 {
 }
 .mini-game button {
     background: green;
-    padding: 10px;
+    padding: 0;
+    margin-left: 1vh;
 }
 
+.mini-game button:hover{
+    background-color: lightgray;
+}
 
+input {
+    height: 2.1vh;
+}
 
 #close-button {
     background: yellow;
@@ -95,6 +130,11 @@ header h1 {
     font-family: Arial, Helvetica, sans-serif;
     cursor: pointer;
 }
+
+#close-button:hover {
+    background-color: lightgray;
+}
+
 /* Learned the following from W3Schools! (Refactored to fit my design) */
 .modal {
     display: none; /* Hidden by default */
