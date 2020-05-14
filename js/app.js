@@ -23,12 +23,11 @@ const startGame = () => {
     $('.game-header').show();
     setTimer();
     } else {
-        console.log('pressed')
         location.reload(true);  
     }
 }
 //Countdown Timer functionality
-let time = 119;
+let time = 120;
 let clock = 159;
 let timeRemaining = clock.toString();
 const setTimer = () => {
@@ -37,8 +36,9 @@ const setTimer = () => {
         if (time === 0) {
             $('#countdown').text('0:00');
             clearInterval(timer);
-            time = 119;
-            clock = 159;
+            if (confirm('BOMB EXPLODED')) {
+                location.reload(true);   
+            }
             $('#start').show();
         } else if (time >= 60){
         timeRemaining = clock.toString().split('');
@@ -112,13 +112,36 @@ $(".mini-game").on("click",function(event){
     });
 });
 // Receiving player responses and reacting
+let $strikes = $('#strike-count')
 let correctResponses = ['11','thursday','40','5'];
 let altCorrectResponses = ['eleven','Thursday','forty','five'];
-let moreCorrectReponses = ['Eleven','thurs','40 socks','five minutes'];
+let moreCorrectResponses = ['Eleven','thurs','40 socks','five minutes'];
 $(".submit").on("click",function(event){
     $currentSubmitBtn = $(event.target);
     $currentResponse = $currentSubmitBtn.parents().eq(0).siblings().eq(2).val();
-
+    if (!(correctResponses.includes($currentResponse) || moreCorrectResponses.includes($currentResponse) || altCorrectResponses.includes($currentResponse))){
+        if ($strikes.text() == "X X ") {
+            if (confirm('BOMB EXPLODED')) {
+                location.reload(true);   
+            }
+        } else if ($strikes.text() == "O STRIKES"){
+        console.log('works');
+        return $strikes.text('X ');
+        } else if ($strikes.text() == "X "){
+        $($strikes).css('color','red');
+        $strikes.text($strikes.text() + "X ");
+        $strikes.css("transform", "scale(2)")
+        $strikes.css("transition", ".1s linear")
+        } else {
+        return $strikes.text($strikes.text() + "X ");
+        }
+    } else {
+        $currentSubmitBtn.parents().eq(2).css('background-color', 'rgba(12,111,1,0.6)')
+        $currentSubmitBtn.parents().eq(0).siblings().eq(2).val("");
+        $currentSubmitBtn.parents().eq(0).siblings().eq(0).text('BOMB SECTION DEFUSED!');
+        $currentSubmitBtn.parents().eq(0).siblings().eq(1).css('text-decoration', "line-through");
+    }
+});
 
 // Add listeners here 
 

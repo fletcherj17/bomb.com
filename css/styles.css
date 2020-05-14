@@ -103,7 +103,9 @@ button:hover {
     color: white;
     justify-content: center;
     align-items: center;
-}
+    text-shadow: black;
+    }
+
 .mini-game button {
     background: green;
     padding: 0;
@@ -116,6 +118,8 @@ button:hover {
 
 input {
     height: 2.1vh;
+    font-family: 'DM Mono', monospace;
+    font-size: 14px;
 }
 
 #close-button {
