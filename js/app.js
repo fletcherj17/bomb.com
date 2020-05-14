@@ -111,6 +111,13 @@ $(".mini-game").on("click",function(event){
     $("#close-button").hide();
     });
 });
+// Receiving player responses and reacting
+let correctResponses = ['11','thursday','40','5'];
+let altCorrectResponses = ['eleven','Thursday','forty','five'];
+let moreCorrectReponses = ['Eleven','thurs','40 socks','five minutes'];
+$(".submit").on("click",function(event){
+    $currentSubmitBtn = $(event.target);
+    $currentResponse = $currentSubmitBtn.parents().eq(0).siblings().eq(2).val();
 
 
 // Add listeners here 

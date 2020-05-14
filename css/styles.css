@@ -49,6 +49,13 @@ text-align: center;
     flex: 1;
 }
 
+.redtext {
+    color: firebrick;
+}
+.greytext {
+    color: grey;
+}
+
 button{
     background-color: #1f1f1f;
     margin-bottom: 15px;
