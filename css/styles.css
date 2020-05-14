@@ -6,6 +6,7 @@ height: 100vh;
 flex-direction: column;
 font-family: 'DM Mono', monospace;
 background-image: url(images/bg.jpg);
+text-align: center;
 }
 
 #title{
@@ -46,10 +47,6 @@ background-image: url(images/bg.jpg);
     text-align: center;
     color:firebrick;
     flex: 1;
-}
-
-#strike-count {
-    color: red;
 }
 
 button{

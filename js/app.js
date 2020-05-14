@@ -85,11 +85,14 @@ const setTimer = () => {
     }, 1000);
 };
 
-//Click to play minigames
+//Minigame Gameplay
+//Opening and closing mini-games
+let minigameColors = ["rgba(25,70,150,0.7)","rgba(50,35,70,0.7)","rgba(230,50,5,0.7)","rgba(188,131,0,0.7)"]
 $(".mini-game").on("click",function(event){
     if ($("#close-button").css('display') === "none"){
     $currentMiniGame = $(event.target);
-    $currentMiniGame.css('background-color', "rgba(0,0,0,0.7)")
+    $currentMiniGame.css('background-color', minigameColors[0])
+    minigameColors.splice(0,1)
     $currentMiniGameParent = $currentMiniGame.parent();
     $currentMiniGameChild = $currentMiniGame.children();
     console.log($currentMiniGameChild);
