@@ -25,8 +25,8 @@ const startGame = () => {
     }
 }
 //Countdown Timer functionality
-let time = 65;
-let clock = 105;
+let time = 239;
+let clock = 359;
 const setTimer = () => {
     $('#start').hide();
 
@@ -183,7 +183,7 @@ savedScores.setItem('Fletcher', '85s');
 savedScores.setItem('Fletcher Sr.', '101s');
 savedScores.setItem('Fletcher\'s Mom', '94s');
 savedScores.setItem('Che', '99s');
-savedScores.setItem('Britt', '188s');
+savedScores.setItem('Brittany', '188s');
 savedScores.setItem('Debra', '200s');
 }
 let highScores = [];
@@ -199,7 +199,7 @@ let getScores = () => {
         highScores.push(obj)
     }
     highScores.sort((a, b) => (a.score > b.score) ? 1 : -1)
-    while (highScores.length > 9){
+    while (highScores.length > 10){
         highScores.pop();
     }
     let leaderboard = '';
