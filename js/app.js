@@ -92,7 +92,6 @@ const setTimer = () => {
 
 //Get leaderboard scores
 let savedScores = window.localStorage;
-savedScores.clear();
 let addFakeHighScores = () =>{
 savedScores.setItem('Fletcher', '80s');
 savedScores.setItem('Fletcher Sr.', '77s');
