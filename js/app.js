@@ -185,9 +185,9 @@ savedScores.setItem('Che', '99s');
 savedScores.setItem('Brittany', '188s');
 savedScores.setItem('Debra', '200s');
 }
+addFakeHighScores()
 let highScores = [];
 let getScores = () => {
-    addFakeHighScores();
     for(var i=0; i < savedScores.length; i++){
         let obj = {};
         obj.name = savedScores.key(i);
