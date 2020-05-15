@@ -1,3 +1,10 @@
+@media only screen and (max-width: 600px) {
+    body {
+    max-height: 2436px;
+    max-width: 1125px;
+    }
+    }
+
 body{
 display: flex;
 align-items: center;
