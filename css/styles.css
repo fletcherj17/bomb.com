@@ -164,7 +164,8 @@ section h2 {
 }
 
 section.problems {
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgba(0,0,0,0.8);
+    border-radius: 25%;
 }
 
 span.num{
