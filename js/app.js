@@ -177,7 +177,6 @@ const setTimer = () => {
 
 //Get leaderboard scores
 let savedScores = window.localStorage;
-savedScores.clear();
 let addFakeHighScores = () =>{
 savedScores.setItem('Fletcher', '85s');
 savedScores.setItem('Fletcher Sr.', '101s');
@@ -246,6 +245,7 @@ $(".submit").on("click",function(event){
     $currentSubmitBtn = $(event.target);
     $currentResponse = $currentSubmitBtn.siblings().eq(2).val();
     if (!(correctResponses.includes($currentResponse))){
+// LOSE CASE
         if ($strikes.text() == "X X ") {
             $strikes.text($strikes.text() + "X ");
             $('#start').show();
@@ -276,6 +276,7 @@ $(".submit").on("click",function(event){
         $currentSubmitBtn.siblings().eq(2).hide();
         $currentSubmitBtn.siblings().eq(0).text('BOMB SECTION DEFUSED!');
         $currentSubmitBtn.siblings().eq(1).css('text-decoration', "line-through");
+// WIN CASE
         if ($('#game-1').css('background-color') === completedColor && $('#game-2').css('background-color') === completedColor && $('#game-3').css('background-color') === completedColor && $('#game-4').css('background-color') === completedColor) {
             $('#start').show();
             if (confirm('BOMB DEFUSED! YOU WIN! Press "OK" to see your rank!')) {
