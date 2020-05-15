@@ -163,6 +163,10 @@ section h2 {
     color: firebrick;
 }
 
+section h2, section p {
+    padding: 2%;
+}
+
 section.problems {
     background-color: rgba(0,0,0,0.8);
     border-radius: 25%;
