@@ -163,6 +163,10 @@ section h2 {
     color: firebrick;
 }
 
+section.problems {
+    background-color: rgba(0,0,0,0.4);
+}
+
 span.num{
     color: firebrick;
 }
