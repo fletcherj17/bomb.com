@@ -80,6 +80,14 @@ header h1 {
     flex: 1;
 }
 
+img {
+    max-height: 200px;
+    max-width: 200px;
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+}
+
 a:visited{
     color: firebrick;
 }
@@ -98,6 +106,7 @@ button:hover {
 
 .problems {
     display:none;
+    width: 80%
 }
 
 
@@ -137,6 +146,7 @@ aside {
     justify-content: center;
     align-items: center;
     text-shadow: black;
+    flex-direction: column;
     }
 
 .mini-game button {
@@ -153,6 +163,7 @@ input {
     height: 2.1vh;
     font-family: 'DM Mono', monospace;
     font-size: 14px;
+    margin-bottom: 20px;
 }
 
 #close-button {
