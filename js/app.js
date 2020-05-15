@@ -1,3 +1,4 @@
+$('.post-game').hide();
 $('.game').hide();
 $('.game-header').hide();
 let picNum = Math.floor(Math.random() * 5.99)
@@ -16,7 +17,8 @@ $closeModalBtn.on('click', function() {
 //Start button
 const startGame = () => {
     if ($('#start').text() === 'START GAME'){
-    $('.game').show();
+        $('.post-game').show();
+        $('.game').show();
     $('#start').text('RESTART')
     $('.game-header').show();
     setTimer();
@@ -27,6 +29,7 @@ const startGame = () => {
 //Countdown Timer functionality
 let time = 239;
 let clock = 359;
+let loseColor = 'rgba(200, 0, 0, 0.7)'
 const setTimer = () => {
     $('#start').hide();
 
@@ -34,7 +37,7 @@ const setTimer = () => {
         if (($('#game-1').css('background-color') === completedColor && $('#game-2').css('background-color') === completedColor && $('#game-3').css('background-color') === completedColor && $('#game-4').css('background-color') === completedColor) || $strikes.text() == "X X X "){
             clearInterval(timer);
 
-
+// LOSE CASE
         } else if (time === 0) {
             $('#countdown').text('0:00');
             clearInterval(timer);
@@ -44,12 +47,22 @@ const setTimer = () => {
                 $('.mini-game').off();
                 $('.board-body').append(`${getScores()}`);
                 $('aside').show();  
+                $('#game-1').css('background-color', loseColor)
+                $('#game-2').css('background-color', loseColor)
+                $('#game-3').css('background-color', loseColor)  
+                $('#game-4').css('background-color', loseColor)
             } else {
                 $('#close-button').click();
                 $('.mini-game').off();
                 $('.board-body').append(`${getScores()}`);
                 $('aside').show();  
+                $('#game-1').css('background-color', loseColor)
+                $('#game-2').css('background-color', loseColor)
+                $('#game-3').css('background-color', loseColor)  
+                $('#game-4').css('background-color', loseColor)
             }
+        
+        
         } else if (time > 179){
             timeRemaining = clock.toString().split('');
             console.log(timeRemaining)
@@ -179,15 +192,12 @@ const setTimer = () => {
 let savedScores = window.localStorage;
 let addFakeHighScores = () =>{
 savedScores.setItem('Fletcher', '85s');
-savedScores.setItem('Fletcher Sr.', '101s');
 savedScores.setItem('Fletcher\'s Mom', '94s');
-savedScores.setItem('Che', '99s');
 savedScores.setItem('Brittany', '188s');
-savedScores.setItem('Debra', '200s');
 }
-addFakeHighScores()
 let highScores = [];
 let getScores = () => {
+    addFakeHighScores()
     for(var i=0; i < savedScores.length; i++){
         let obj = {};
         obj.name = savedScores.key(i);
@@ -198,7 +208,7 @@ let getScores = () => {
         highScores.push(obj)
     }
     highScores.sort((a, b) => (a.score > b.score) ? 1 : -1)
-    while (highScores.length > 10){
+    while (highScores.length > 8){
         highScores.pop();
     }
     let leaderboard = '';
@@ -239,7 +249,7 @@ $(".mini-game").on("click",function(event){
 
 // Receiving player responses and reacting
 let $strikes = $('#strike-count')
-let correctResponses = [2 ,'two', '2', 'Alabama', 'Arizona', 'Arkansas', 'California', 'Connecticut', 'Delaware', 'alabama', 'arizona', 'arkansas', 'california', 'connecticut', 'delaware','40','5', "5 mins", "5 minutes", "five mins",'forty','five','40 socks','five minutes', "40 Socks", "forty socks"];
+let correctResponses = ['two', '2', 'Two', 'Alabama', 'AL', 'Arizona', 'AZ', 'Arkansas', 'AR', "CA", 'CO', 'CT', 'DE', 'California', "Cali", 'Connecticut', 'Delaware', 'alabama', 'arizona', 'arkansas', 'california', 'cali', 'connecticut', 'delaware','40','5', "5 mins", "5 minutes", "five mins",'forty','five', 'Five', "Five minutes", "Five mins", '40 socks','five minutes', "40 Socks", "forty socks"];
 let completedColor = 'rgba(12, 111, 1, 0.6)';
 $(".submit").on("click",function(event){
     $currentSubmitBtn = $(event.target);
@@ -253,13 +263,23 @@ $(".submit").on("click",function(event){
                 $('#close-button').click();
                 $('.mini-game').off();
                 $('.board-body').append(`${getScores()}`);
-                $('aside').show();  
+                $('aside').show();
+                $('#game-1').css('background-color', loseColor)
+                $('#game-2').css('background-color', loseColor)
+                $('#game-3').css('background-color', loseColor)  
+                $('#game-4').css('background-color', loseColor)  
             } else {
                 $('#close-button').click();
                 $('.mini-game').off();
                 $('.board-body').append(`${getScores()}`);
                 $('aside').show();  
+                $('#game-1').css('background-color', loseColor)
+                $('#game-2').css('background-color', loseColor)
+                $('#game-3').css('background-color', loseColor)  
+                $('#game-4').css('background-color', loseColor)
             }
+        
+        
         } else if ($strikes.text() == "0 STRIKES"){
         return $strikes.text('X ');
         } else if ($strikes.text() == "X "){
