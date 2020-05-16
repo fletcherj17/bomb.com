@@ -208,7 +208,7 @@ let getScores = () => {
         highScores.push(obj)
     }
     highScores.sort((a, b) => (a.score > b.score) ? 1 : -1)
-    while (highScores.length > 8){
+    while (highScores.length > 7){
         highScores.pop();
     }
     let leaderboard = '';
